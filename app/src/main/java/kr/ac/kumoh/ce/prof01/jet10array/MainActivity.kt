@@ -65,78 +65,20 @@ fun LottoLandscape(viewModel: LottoViewModel = viewModel()) {
             .padding(8.dp)
             .background(Color(0xFFFBEAFF)),
     ) {
-        Text(
-            viewModel.numbers[0].toString(),
-            Modifier
-                .weight(1F)
-                .fillMaxSize()
-                .padding(8.dp)
-                .background(Color(0xFF845EC2))
-                .wrapContentSize(),
-            fontSize = 50.sp,
-            color = Color(0xFFFBEAFF),
-            textAlign = TextAlign.Center,
-        )
-        Text(
-            viewModel.numbers[1].toString(),
-            Modifier
-                .weight(1F)
-                .fillMaxSize()
-                .padding(8.dp)
-                .background(Color(0xFF845EC2))
-                .wrapContentSize(),
-            fontSize = 50.sp,
-            color = Color(0xFFFBEAFF),
-            textAlign = TextAlign.Center,
-        )
-        Text(
-            viewModel.numbers[2].toString(),
-            Modifier
-                .weight(1F)
-                .fillMaxSize()
-                .padding(8.dp)
-                .background(Color(0xFF845EC2))
-                .wrapContentSize(),
-            fontSize = 50.sp,
-            color = Color(0xFFFBEAFF),
-            textAlign = TextAlign.Center,
-        )
-        Text(
-            viewModel.numbers[3].toString(),
-            Modifier
-                .weight(1F)
-                .fillMaxSize()
-                .padding(8.dp)
-                .background(Color(0xFF845EC2))
-                .wrapContentSize(),
-            fontSize = 50.sp,
-            color = Color(0xFFFBEAFF),
-            textAlign = TextAlign.Center,
-        )
-        Text(
-            viewModel.numbers[4].toString(),
-            Modifier
-                .weight(1F)
-                .fillMaxSize()
-                .padding(8.dp)
-                .background(Color(0xFF845EC2))
-                .wrapContentSize(),
-            fontSize = 50.sp,
-            color = Color(0xFFFBEAFF),
-            textAlign = TextAlign.Center,
-        )
-        Text(
-            viewModel.numbers[5].toString(),
-            Modifier
-                .weight(1F)
-                .fillMaxSize()
-                .padding(8.dp)
-                .background(Color(0xFF845EC2))
-                .wrapContentSize(),
-            fontSize = 50.sp,
-            color = Color(0xFFFBEAFF),
-            textAlign = TextAlign.Center,
-        )
+        viewModel.numbers.map {
+            Text(
+                it.toString(),
+                Modifier
+                    .weight(1F)
+                    .fillMaxSize()
+                    .padding(8.dp)
+                    .background(Color(0xFF845EC2))
+                    .wrapContentSize(),
+                fontSize = 50.sp,
+                color = Color(0xFFFBEAFF),
+                textAlign = TextAlign.Center,
+            )
+        }
     }
 }
 

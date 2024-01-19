@@ -7,9 +7,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -83,6 +87,50 @@ fun LottoLandscape(viewModel: LottoViewModel = viewModel()) {
 }
 
 @Composable
-fun LottoPortrait() {
+fun RowScope.TextNumber(number: Int) {
+    Text(
+        text = number.toString(),
+        modifier = Modifier
+            .weight(1F)
+            .fillMaxSize()
+            .background(Color(0xFF845EC2))
+            .padding(8.dp)
+            .wrapContentSize(),
+        fontSize = 50.sp,
+        color = Color(0xFFFEFEDF),
+        textAlign = TextAlign.Center,
+    )
+}
 
+@Composable
+fun LottoPortrait(viewModel: LottoViewModel = viewModel()) {
+    Row {
+        val textNumbers: List<@Composable () -> Unit> =
+            viewModel.numbers.map {
+                { TextNumber(number = it) }
+            }
+
+        Column(
+            Modifier
+                .fillMaxSize()
+                .padding(8.dp)
+                .background(Color(0xFFFEF7FF))
+        ) {
+            Row(Modifier.weight(1F).padding(8.dp)) {
+                textNumbers[0]()
+                Spacer(modifier = Modifier.size(16.dp))
+                textNumbers[1]()
+            }
+            Row(Modifier.weight(1F).padding(8.dp)) {
+                textNumbers[2]()
+                Spacer(modifier = Modifier.size(16.dp))
+                textNumbers[3]()
+            }
+            Row(Modifier.weight(1F).padding(8.dp)) {
+                textNumbers[4]()
+                Spacer(modifier = Modifier.size(16.dp))
+                textNumbers[5]()
+            }
+        }
+    }
 }

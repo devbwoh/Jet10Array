@@ -10,9 +10,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -47,15 +49,27 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen() {
+    val viewModel: LottoViewModel = viewModel()
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
-        if (LocalConfiguration.current.orientation
+        Column {
+            Button(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth(),
+                onClick = { viewModel.generate() }
+            ) {
+                Text(text = "번호 생성", fontSize = 20.sp)
+            }
+
+            if (LocalConfiguration.current.orientation
                 == Configuration.ORIENTATION_LANDSCAPE)
-            LottoLandscape()
-        else
-            LottoPortrait()
+                LottoLandscape()
+            else
+                LottoPortrait()
+        }
     }
 }
 
@@ -114,17 +128,26 @@ fun LottoPortrait(viewModel: LottoViewModel = viewModel()) {
                 .padding(8.dp)
                 .background(Color(0xFFFEF7FF))
         ) {
-            Row(Modifier.weight(1F).padding(8.dp)) {
+            Row(
+                Modifier
+                    .weight(1F)
+                    .padding(8.dp)) {
                 textNumbers[0]()
                 Spacer(modifier = Modifier.size(16.dp))
                 textNumbers[1]()
             }
-            Row(Modifier.weight(1F).padding(8.dp)) {
+            Row(
+                Modifier
+                    .weight(1F)
+                    .padding(8.dp)) {
                 textNumbers[2]()
                 Spacer(modifier = Modifier.size(16.dp))
                 textNumbers[3]()
             }
-            Row(Modifier.weight(1F).padding(8.dp)) {
+            Row(
+                Modifier
+                    .weight(1F)
+                    .padding(8.dp)) {
                 textNumbers[4]()
                 Spacer(modifier = Modifier.size(16.dp))
                 textNumbers[5]()

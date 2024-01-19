@@ -2,10 +2,8 @@ package kr.ac.kumoh.ce.prof01.jet10array
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,15 +27,15 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import kr.ac.kumoh.ce.prof01.jet10array.ui.theme.Jet10ArrayTheme
 
 class MainActivity : ComponentActivity() {
-    private val viewModel: LottoViewModel by viewModels()
+//    private val viewModel: LottoViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.generate()
-
-        for (i in viewModel.numbers.indices)
-            Log.i("onCreate()", "Lotto ${viewModel.numbers[i]}")
+//        viewModel.generate()
+//
+//        for (i in viewModel.numbers.indices)
+//            Log.i("onCreate()", "Lotto ${viewModel.numbers[i]}")
 
         setContent {
             Jet10ArrayTheme {
